@@ -7,7 +7,6 @@ import store from "./Store";
 class TodoList extends Component {
   constructor(props) {
     super(props);
-    
     this.state = store.getState();
     store.subscribe(this.handleStoreChange)
   }
@@ -19,8 +18,23 @@ class TodoList extends Component {
     store.dispatch(action)
   }
   handleStoreChange=()=>{
-    console.log('store change')
+    
     this.setState(store.getState())
+    
+  }
+  btnOnClick=()=>{
+    const action={
+      type:'add_todo_item',
+    }
+    store.dispatch(action)
+  }
+  deleteItem(index){
+   
+    const action={
+      type:'delete_todo_item',
+      index:index
+    }
+    store.dispatch(action)
   }
   render() {
     return (
@@ -33,14 +47,17 @@ class TodoList extends Component {
             this.onInputChange(e);
           }}
         ></Input>
-        <Button type="primary" style={{ marginLeft: 20 }}>
+        <Button type="primary" 
+        style={{ marginLeft: 20 }}
+        onClick={this.btnOnClick}>
           Primary Button
         </Button>
         <List
           style={{ width: 300, marginTop: 20 }}
           bordered
           dataSource={this.state.list}
-          renderItem={(item) => <List.Item>{item}</List.Item>}
+          renderItem={(item,index) => <List.Item onClick={this.deleteItem.bind(this,index)}>{item}</List.Item>}
+       
         />
       </div>
     );
