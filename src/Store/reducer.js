@@ -3,6 +3,7 @@
     ADD_TODO_ITEM,
     DELETE_TODO_ITEM,
     INIT_LIST_ACTION,
+    GET_INIT_LIST
   } from "./actionTypes.js";
   
 const defaultState = {

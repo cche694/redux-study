@@ -3,8 +3,9 @@ import {
   ADD_TODO_ITEM,
   DELETE_TODO_ITEM,
   INIT_LIST_ACTION,
+  GET_INIT_LIST
 } from "./actionTypes.js";
-import axios from 'axios'
+
 
 export const changInputValue = (index) => ({
   type: CHANGE_INPUT_VALUE,
@@ -25,16 +26,9 @@ export const initListAction = (listdata) => {
     list: listdata,
   };
 };
-export const getTodoList = () => {
-  return (dispatch) => {
-    axios
-      .get(
-        "https://www.fastmock.site/mock/96b7e89baa78750252e85c76d46d8cfe/list/api/list"
-      )
-      .then((res) => {
-        const data = res.data.data;
-        const action=initListAction(data.list)
-        dispatch(action);
-      });
-  };
-};
+export const getInitList=()=>{
+  return {
+    type:GET_INIT_LIST
+  }
+}
+

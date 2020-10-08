@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import store from "./Store";
-import {changInputValue,addTodoItem,deleteTodoItem,initListAction,getTodoList} from './Store/actionCreator.js'
+import {changInputValue,addTodoItem,deleteTodoItem,initListAction,getInitList} from './Store/actionCreator.js'
 import TodoListUI from "./TodoListUI";
+import axios from "axios"
 
 
 
@@ -12,8 +13,9 @@ class TodoList extends Component {
     store.subscribe(this.handleStoreChange);
   }
   componentDidMount(){
-   const action =getTodoList()
-   store.dispatch(action)
+    const action=getInitList()
+    console.log(action)
+    store.dispatch(action)
   }
   onInputChange(e) {
     const action=changInputValue(e.target.value)
