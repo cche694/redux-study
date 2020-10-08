@@ -1,34 +1,14 @@
-import {
-  CHANGE_INPUT_VALUE,
-  ADD_TODO_ITEM,
-  DELETE_TODO_ITEM,
-  INIT_LIST_ACTION,
-  GET_INIT_LIST
-} from "./actionTypes.js";
-
-
-export const changInputValue = (index) => ({
-  type: CHANGE_INPUT_VALUE,
-  value: index,
-});
-export const addTodoItem = () => {
+import { CHANGE_INPUT_VALUE, ADD_ITEM ,DELETE_ITEM} from "./actionTypes";
+export const changInputValue = (value) => {
   return {
-    type: ADD_TODO_ITEM,
+    type: CHANGE_INPUT_VALUE,
+    value,
   };
 };
-export const deleteTodoItem = (index) => ({
-  type: DELETE_TODO_ITEM,
-  index: index,
-});
-export const initListAction = (listdata) => {
-  return {
-    type: INIT_LIST_ACTION,
-    list: listdata,
-  };
-};
-export const getInitList=()=>{
-  return {
-    type:GET_INIT_LIST
-  }
-}
-
+export const addItem=()=>({
+    type:ADD_ITEM
+})
+export const deleteItem=(index)=>({
+    type:DELETE_ITEM,
+    index:index
+})
